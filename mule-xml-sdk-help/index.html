@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="robots" content="max-image-preview:large">
+	<meta name="google-site-verification" content="BCjSwBqP4XS2yH1CVwXNsntcBvNIjNuhN8M8aGM670Q" />
+	<meta name="msvalidate.01" content="654C959A926C63EAED391D1C87EE6A47" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<meta name="description"
+		content="RAML is used to design API specifications in Integration tools like Mulesoft. It takes time and efforts to convert a JSON structure to RAML specification, especially with large JSON payloads. This JSON to RAML converter saves a lot of your manual effort.">
+	<script id="rendered-js" src="js/script.js"></script>
+	<script src="js/voca.js" type="text/javascript"></script>
+
+	<!-- Scripts For XML Display -->
+	<script src="js/codemirror.js" type="text/javascript"></script>
+	<script src="js/vkbeautify.js" type="text/javascript"></script>
+
+	<title>JSON to RAML Converter</title>
+
+	<style type="text/css">
+	.CodeMirror-line-numbers {
+        width: 2.2em;
+        color: #aaa;
+        background-color: #eee;
+        text-align: right;
+        padding-right: .3em;
+        font-size: 10pt;
+        font-family: monospace;
+        padding-top: .4em;
+        line-height: normal;
+      }
+    </style>
+</head>
+
+<body onload="loadPage()" autocomplete="off">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-dark bg-primary">
+		<a class="navbar-brand" href="/">Mule XML XDK Helper</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link " href="index.html" role="button">Home 🏠</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link " href="prop.html" role="button">Create Properties</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container my-5">
+		<div id="app">
+			<div class="row my-7">
+				<div class="col-12">
+					<h1>Mule XML XDK Helper - Parameter</h1>
+				</div>
+			</div>
+			<div class="row my-3">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="secure-type-list" role="tablist">
+								<!-- <li class="nav-item">
+									<a class="nav-link" href="#property" role="tab" aria-controls="property"
+										aria-selected="true">Property</a>
+								</li> -->
+								<li class="nav-item">
+									<a class="nav-link active" href="#operation" role="tab" aria-controls="operation"
+										aria-selected="false">Operation</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#parameter" role="tab" aria-controls="parameter"
+										aria-selected="false">Parameter</a>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<div class="tab-content">
+								<!-- <div class="tab-pane " id="property" role="tabpanel">
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Defines an order in which to render each element in the UI."
+											class='form-control' id='prop_order' placeholder='Order' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Defines the group (or tab) to which the <property> must belong in the UI."
+											class='form-control' id='prop_tab' placeholder='Tab to show' type='text'>
+									</div>
+									
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right" data-html=true title="Possible values:
+						</br></br>
+							REQUIRED: Property must be present. It cannot be REQUIRED if the property has a defaultValue.
+						</br></br>
+							OPTIONAL: Property is not required."
+											class='form-control' id='prop_use'>
+											<option style="display: none;" selected value="">Is Required*</option>
+											<option value="REQUIRED">Required</option>
+											<option value="OPTIONAL">Optional</option>
+										</select>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Name of the <property>" class='form-control' id='prop_name'
+											placeholder='Name*' type='text' required>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Provides a UI label. When there is no displayName, the default value is a hyphenated version of the name attribute."
+											class='form-control' id='prop_displayName' placeholder='Display Name*'
+											type='text' required>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="The <operation> uses the default value if you do not provide another value."
+											class='form-control' id='prop_defaultValue' placeholder='Default Value'
+											type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Adds a small tooltip to the <property>." class='form-control'
+											id='prop_summary' placeholder='Summary' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Adds a short example of the data type for this property."
+											class='form-control' id='prop_example' placeholder='Example' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<textarea data-toggle="tooltip" data-placement="right"
+											title="Documentation for the <property>." rows="2" class="form-control"
+											id='prop_description' placeholder="Property Description"></textarea>
+									</div>
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right"
+											title="Defines the data type of the <property>. You can use any primitive type such as string, boolean, datetime, date, number, time, or it can also rely on any type defined in the catalog."
+											class='form-control' id='prop_type' onchange='prop_CheckType(this.value);'>
+											<option style="display: none;" selected value="">Type*</option>
+											<option value="any">Any</option>
+											<option value="string">String</option>
+											<option value="number">Number</option>
+											<option value="boolean">Boolean</option>
+											<option value="datetime">Date Time</option>
+											<option value="date">Date</option>
+											<option value="time">Time</option>
+											<option value="other">Other</option>
+										</select>
+										<div class="input-group mb-3">
+											<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+												title="Custom Type defined in catalog file" class='form-control' type="text"
+												name="type_text" placeholder="Enter Custom Type" id='prop_type_text'
+												style='display:none;' />
+											<div onclick='prop_CheckType("");' style='display:none;' class="input-group-append" id='prop_type_text_close'>
+												<button class="btn btn-danger" type="button">X</button>
+											</div>
+										</div>
+									</div>
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right"
+											title="Marks the <property> with **** in the UI." class='form-control'
+											id='prop_password'>
+											<option style="display: none;" selected value="">Is Password</option>
+											<option value="REQUIRED">Required</option>
+											<option value="OPTIONAL">Optional</option>
+										</select>
+									</div>
+									<button onclick="prop_clearContents()" class="btn btn-dark my-3">Reset</button>
+									<button onclick="prop_convert()" class="btn btn-success">Convert</button>
+								</div> -->
+								<div class="tab-pane active" id="operation" role="tabpanel">
+									<label for="output bold">Input for Parameters</label>
+									<div class='form-group internal'>
+										<input autocomplete="off" onchange="op_name_change(this.value)" data-toggle="tooltip" data-placement="right"
+											title="Name of the <operation>" class='form-control' id='op_name'
+											placeholder='Name*' type='text' required>
+									</div>
+									<div class='form-group internal'>
+										<textarea onchange="op_desc_change(this.value)" data-toggle="tooltip" data-placement="right"
+											title="Documentation for the <operation>." rows="2" class="form-control"
+											id='op_description' placeholder="Operation Description"></textarea>
+									</div>
+								</div>
+								<!--property section starts  -->
+								<div class="tab-pane" id="parameter" role="tabpanel">
+									
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Defines an order in which to render each element in the UI."
+											class='form-control' id='param_order' placeholder='Order' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Defines the group (or tab) to which the <parameter> must belong in the UI."
+											class='form-control' id='param_tab' placeholder='Tab to show' type='text'>
+									</div>
+									
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" onchange="processRequired(this.value);" data-placement="right" data-html=true title="Possible values:
+						</br></br>
+							REQUIRED: Parameter must be present. It cannot be REQUIRED if the parameter has a defaultValue.
+						</br></br>
+							OPTIONAL: Parameter is not required."
+											class='form-control' id='param_use'>
+											<option style="display: none;" selected value="">Is Required*</option>
+											<option value="REQUIRED">REQUIRED</option>
+											<option value="OPTIONAL">OPTIONAL</option>
+										</select>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" onchange="this.value = v.kebabCase(this.value);" data-toggle="tooltip" data-placement="right"
+											title="Name of the <parameter>" class='form-control' id='param_name'
+											placeholder='Name*' type='text' required>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Provides a UI label. When there is no displayName, the default value is a hyphenated version of the name attribute."
+											class='form-control' id='param_displayName' placeholder='Display Name*'
+											type='text' required>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="The <operation> uses the default value if you do not provide another value."
+											class='form-control' id='param_defaultValue' placeholder='Default Value'
+											type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Adds a small tooltip to the <parameter>." class='form-control'
+											id='param_summary' placeholder='Summary' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+											title="Adds a short example of the data type for this parameter."
+											class='form-control' id='param_example' placeholder='Example' type='text'>
+									</div>
+									<div class='form-group internal'>
+										<textarea data-toggle="tooltip" data-placement="right"
+											title="Documentation for the <parameter>." rows="2" class="form-control"
+											id='param_description' placeholder="Parameter Description"></textarea>
+									</div>
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right" data-html=true title="ATTRIBUTE renders an attribute.
+							</br></br>
+								CONTENT implies support for DataWeave in place as a child element.
+							</br></br>
+								PRIMARY works like CONTENT but maps to the payload by default." class='form-control' id='param_role' required>
+											<option style="display: none;" selected value="">Role*</option>
+											<option value="BEHAVIOUR">Attribute</option>
+											<option value="CONTENT">Content</option>
+											<option value="PRIMARY">Primary</option>
+										</select>
+									</div>
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right"
+											title="Defines the data type of the <parameter>. You can use any primitive type such as string, boolean, datetime, date, number, time, or it can also rely on any type defined in the catalog."
+											class='form-control' id='param_type' onchange='param_CheckType(this.value);'>
+											<option style="display: none;" selected value="">Type*</option>
+											<option value="any">Any</option>
+											<option value="string">String</option>
+											<option value="number">Number</option>
+											<option value="boolean">Boolean</option>
+											<option value="datetime">Date Time</option>
+											<option value="date">Date</option>
+											<option value="time">Time</option>
+											<option value="other">Other</option>
+										</select>
+										<div class="input-group mb-3">
+											<input autocomplete="off" data-toggle="tooltip" data-placement="right"
+												title="Custom Type defined in catalog file" class='form-control' type="text"
+												name="type_text" placeholder="Enter Custom Type" id='param_type_text'
+												style='display:none;' />
+											<div onclick='param_CheckType("");' style='display:none;' class="input-group-append" id='param_type_text_close'>
+												<button class="btn btn-danger" type="button">X</button>
+											</div>
+										</div>
+									</div>
+									<div class='form-group internal'>
+										<select data-toggle="tooltip" data-placement="right"
+											title="Marks the <parameter> with **** in the UI." class='form-control'
+											id='param_password'>
+											<option style="display: none;" selected value="">Is Password</option>
+											<option value="REQUIRED">Required</option>
+											<option value="OPTIONAL">Optional</option>
+										</select>
+									</div>
+									<button onclick="param_show_optional(false)" class="btn btn-dark my-3">Show Optional</button></br>
+									<button onclick="param_clearContents()" class="btn btn-warning my-3">Reset</button>
+									<button onclick="param_convert()" class="btn btn-success my-3">Add Paramater</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card">
+						<!-- <div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="secure-type-list" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" role="tab" aria-selected="true">XML Result</a>
+								</li>
+							</ul> -->
+					<label for="output bold"></label>
+					<textarea rows="30" class="form-control" id="output" 
+						placeholder="XML Result will be here"><!-- XML Output will be displayed here --></textarea>
+					<span id="error" hidden>This is Error</span>
+				</div></div></div>
+			<!-- </div> -->
+			</div>
+
+
+		</div>
+	</div>
+
+	<footer class="bg-dark py-5 small">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<label style="color: white ;"><strong>Useful Links:</strong></label>
+					<ul class="list-unstyled">
+						<li><a href="https://bit.ly/SimpleHikeCalc" target="_blank">💰 Salary Hike Calculator</a></li>
+						<li><a href="https://www.linkedin.com/in/muralid25" target="_blank">🗽 My Linkedin</a></li>
+						<li><a href="https://github.com/Upendra-Thunuguntla" target="_blank">👨‍💻 My Github</a></li>
+					</ul>
+				</div>
+				<div class="col-md-7">
+					<label style="color: white ; font-size: medium;" id="visits"><strong>Page Visits : </strong></label>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<!-- <script async src="https://api.countapi.xyz/hit/JSON2RAML/counter?callback=cb"></script> -->
+
+	<script>
+		function cb(response) {
+			document.getElementById('visits').innerHTML = "<strong>Page Visits : </strong>" + response.value;
+		}
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip({ delay: { show: 1000, hide: 100 },trigger: "hover" })
+		})
+		$('#secure-type-list a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+	</script>
+	<script type="text/javascript">
+		var editor = CodeMirror.fromTextArea('output', {
+		  height: "450px",
+		  parserfile: "parsexml.js",
+		  stylesheet: "css/xmlcolors.css",
+		  path: "js/",
+		  lineNumbers: true,
+		  readOnly: true
+		});
+	  </script>
+	<style>
+		body {
+
+			/* margin-top:20px; */
+			background-color: #f5f5ff;
+		}
+	</style>
+</body>
+
+</html>
