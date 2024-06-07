@@ -47,7 +47,7 @@
 <body onload="loadPropPage()" autocomplete="off">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-dark bg-primary">
-		<a class="navbar-brand" href="/">Mule XML XDK Helper</a>
+		<a class="navbar-brand" href="/">Mule XML SDK Helper</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -67,7 +67,7 @@
 		<div id="app">
 			<div class="row my-7">
 				<div class="col-12">
-					<h1>Mule XML XDK Helper - Properties</h1>
+					<h1>Create Properties</h1>
 				</div>
 			</div>
 			<div class="row my-3">
@@ -101,7 +101,7 @@
 							REQUIRED: Property must be present. It cannot be REQUIRED if the property has a defaultValue.
 						</br></br>
 							OPTIONAL: Property is not required."
-											class='form-control' id='prop_use' autofocus>
+											class='form-control' id='prop_use' autofocus required>
 											<option style="display: none;" selected value="">Is Required*</option>
 											<option value="REQUIRED">Required</option>
 											<option value="OPTIONAL">Optional</option>
@@ -142,7 +142,7 @@
 									<div class='form-group internal'>
 										<select data-toggle="tooltip" data-placement="right"
 											title="Defines the data type of the <property>. You can use any primitive type such as string, boolean, datetime, date, number, time, or it can also rely on any type defined in the catalog."
-											class='form-control' id='prop_type' onchange='prop_CheckType(this.value);'>
+											class='form-control' id='prop_type' onchange='prop_CheckType(this.value);' required>
 											<option style="display: none;" selected value="">Type*</option>
 											<option value="any">Any</option>
 											<option value="string">String</option>
@@ -195,8 +195,7 @@
         Designed by 
         <a href="mailto:muralidhar.thunuguntla@gmail.com">Upendra Thunuguntla</a> | 
         <a href="https://www.linkedin.com/in/upendra-thunuguntla/">LinkedIn</a> |  
-        <a href="https://github.com/Upendra-Thunuguntla/mule-xml-sdk-tools">Github Repo</a> |
-		<a href="https://hub.docker.com/repository/docker/upendrathunuguntla/yaml-tools">Run on Docker</a>
+        <a href="https://github.com/Upendra-Thunuguntla/mule-xml-sdk-tools">Github Repo</a>
     </footer> 
 
 	<!-- Optional JavaScript -->
@@ -212,9 +211,6 @@
 		crossorigin="anonymous"></script>
 
 	<script>
-		function cb(response) {
-			document.getElementById('visits').innerHTML = "<strong>Page Visits : </strong>" + response.value;
-		}
 		$(function () {
 			$('[data-toggle="tooltip"]').tooltip({ delay: { show: 100, hide: 100 },trigger: "hover" })
 		})

@@ -47,7 +47,7 @@
 <body onload="loadPage()" autocomplete="off">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-dark bg-primary">
-		<a class="navbar-brand" href="/">Mule XML XDK Helper</a>
+		<a class="navbar-brand" href="/">Mule XML SDK Helper</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -120,7 +120,7 @@
 							REQUIRED: Parameter must be present. It cannot be REQUIRED if the parameter has a defaultValue.
 						</br></br>
 							OPTIONAL: Parameter is not required."
-											class='form-control' id='param_use' autofocus>
+											class='form-control' id='param_use' autofocus required>
 											<option style="display: none;" selected value="">Is Required*</option>
 											<option value="REQUIRED">REQUIRED</option>
 											<option value="OPTIONAL">OPTIONAL</option>
@@ -173,7 +173,7 @@
 									<div class='form-group internal'>
 										<select data-toggle="tooltip" data-placement="right"
 											title="Defines the data type of the <parameter>. You can use any primitive type such as string, boolean, datetime, date, number, time, or it can also rely on any type defined in the catalog."
-											class='form-control' id='param_type' onchange='param_CheckType(this.value);'>
+											class='form-control' id='param_type' onchange='param_CheckType(this.value);' required>
 											<option style="display: none;" selected value="">Type*</option>
 											<option value="any">Any</option>
 											<option value="string">String</option>
@@ -234,8 +234,7 @@
         Designed by 
         <a href="mailto:muralidhar.thunuguntla@gmail.com">Upendra Thunuguntla</a> | 
         <a href="https://www.linkedin.com/in/upendra-thunuguntla/">LinkedIn</a> |  
-        <a href="https://github.com/Upendra-Thunuguntla/mule-xml-sdk-tools">Github Repo</a> |
-		<a href="https://hub.docker.com/repository/docker/upendrathunuguntla/yaml-tools">Run on Docker</a>
+        <a href="https://github.com/Upendra-Thunuguntla/mule-xml-sdk-tools">Github Repo</a>
     </footer>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
